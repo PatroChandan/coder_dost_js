@@ -66,3 +66,124 @@ console.log(`Your age is ${age}`)
 // No need to use curely"{}" if single line code in function
 // No need to use return statement if single line code in function
 
+// --Function Expression--
+let invitation2 = function(name){
+    console.log(`Welcome ${name} to the event` )
+}
+invitation2("coders")
+
+// ---Arrow Function---
+
+let invitation3 = name => `Welcome ${name} to the event`
+console.log(invitation3("chandan"))
+
+// If more than one line is there then can use "{}" for that and if you using "{}" than have to write "return" keyword to return the value
+let invitation4 = name => {
+    return `Welcome ${name} to the event`;
+}
+console.log(invitation4("chandan"))
+
+// ---------Passing function as Argument(Higher order function example)--------
+/**
+ * ----Higher order function----
+ * ->Function which contain other function to do some task
+ * ->other function can be argument (callback function)
+ * ->other function can be inner return value(closere)
+ * 
+ */
+// Example
+
+let upperCase = function(str){
+    return str.toUpperCase();
+}
+
+let lowerCase = function(str){
+    return str.toLowerCase();
+}
+
+let transformer = function(str,fun){
+    return fun(str);
+}
+console.log(transformer("hello",upperCase))
+
+// --------Function returning another function(Higher order function example)---------
+
+let compliment = function(msg){
+    return function(name){
+        console.log(`${msg} ${name}`);
+    }
+};
+
+// console.log(compliment("You are good coder")("Lurie"))
+
+// 2nd method
+
+// let complimented = compliment("You are good coder")
+// console.log(complimented("carry"))
+
+// -----Immediately invoked function Expression(IIFE)-----
+// Executed only once
+
+// Now this is expression
+
+(function(name){
+    console.log("This function will never execute again",name)
+})("IIFE");
+
+
+// -------setTimeOut and setInterval-------
+
+// setTimeOut -> Run Function "once" after "interval" of time
+
+// setInterval -> Run function repeatedly,starting after the interval of time, then repeatimg...
+
+// setTimeOut
+// setTimeOut(func|code,delay,arg1,arg2,...)
+
+// Example ;-
+function greeting(){
+    console.log("Welcome to our coder dost family")
+}
+setTimeout(greeting,10000)
+
+setTimeout(function greeting1(name){
+    console.log(`Welcome ${name} to our coder dost family`)
+},5000,"chandan")
+
+// setInterval:-
+// setInterval(fun|code,delay,arg1,arg2,...)
+
+// setInterval(greeting,1000)
+
+// ----------Hoisting-----------
+// variable "declaration" are "hoisted" towords "top" of their scope
+
+console.log(test)
+var test = 10;
+
+// function declaration
+
+test1()
+function test1(){
+    console.log("Hello programmers")
+}
+
+// Not function expression and arrow function
+test2()
+let test2 = function(){
+    console.log("Hello coders")
+}
+
+// --Function vs Arrow function---
+
+/**
+ * --function--
+ * ->good for multi-line logic
+ * ->Creates a new "this" context
+ */
+
+/****
+ * ----Arrow function-----
+ * ->good for single line returns
+ * ->doesnot create a "this" context
+ */
