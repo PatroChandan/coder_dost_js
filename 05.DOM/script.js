@@ -214,3 +214,22 @@ ul1.addEventListener("click",(e)=>{
         e.target.remove()
     }
 })
+
+
+//-----More Events------
+
+// copy Event
+
+let copyRightElement = document.querySelector('.copy');
+copyRightElement.addEventListener('copy',()=>{
+    console.log("OOOI! This is Copy Right Content");
+})
+
+// Mouse Move Event
+
+let box = document.querySelector('.box');
+
+box.addEventListener('mousemove',(e)=>{
+    console.log(e)
+    // console.log(e.offsetX,e.offsetY)
+})
