@@ -2,15 +2,23 @@
  * --------12.1 Array De-structuring---------
  * Destructuring the Arrays
  */
+// let openingHours = {
+//     sunday:{open:"09:00AM",close:"11:00PM"},
+//     monday:{open:"10:00AM",close:"10:00PM"},
+//     tuesday:{open:"10:00AM",close:"10:00PM"}
+// }
 
 let hotel = {
     name:"hottell",
     Location:"street No xyz Delhi",
     categories:["Chinease","Italian","English"],
     mainMenu:["FoodA","FoodB","FoodC"],
+    starterMenu:["SpecialFoodA","SpecialFoodB"],
+    // openingHours,
     openingHours:{
         sunday:{open:"09:00AM",close:"11:00PM"},
-        monday:{open:"10:00AM",close:"10:00PM"}
+        monday:{open:"10:00AM",close:"10:00PM"},
+        tuesday:{open:"10:00AM",close:"10:00PM"}
     }
 }
 
@@ -159,19 +167,113 @@ console.log(result3)//0 is not nullish value
 /**
  * ---------12.7 for-of loop-----------
  */
+let menu1 = [...hotel.mainMenu, ...hotel.starterMenu]
+//if only value
+
+for(let elem of menu1){
+    console.log(elem);
+}
+
+//if we want both index as well as value
+
+for(let elem of menu1.entries()){
+    console.log(elem)
+}
+
+for(let [i,item] of menu1.entries()){
+    console.log(`${i+1}:${item}`);
+}
 /**
  * ---------12.8 Enhanced Object Literals-shortcuts---------
  */
+
 /**
  * ---------12.9 Optional Chaining---------------
  */
+//Let suppose we want to check this hotel open saturday or not
+//If open then at what time
+
+// console.log(hotel.openingHours.sturday.open)
+//To avoid this error two methods
+//without optional chaining
+if(hotel.openingHours && hotel.openingHours.saturday){
+    console.log(hotel.openingHours.saturday.open)
+}//when it doesnot defined then it wont give any output dont even error
+
+//With optional chaining
+
+console.log(hotel.openingHours.sunday?.open)
+
+//check previous value of the operator => null or undefined
+//return undefined
 /**
  * ---------12.10 Looping Objects-------------
+ * Objects are non-iterable but indirectly we can
  */
+
+//keys(Properties)
+
+let properties = Object.keys(openingHours)
+console.log(properties)
+
+//we know how to loop over array
+
+for(let key of properties){
+    console.log(key)
+}
+
+//values
+
+let values = Object.values(openingHours);
+console.log(values);
+
+//complete object
+
+let entries = Object.entries(openingHours);
+for(let [day,{open,close}] of entries){
+    console.log(`On ${day} We Open at ${open} And Close at ${close}`); 
+}
 /**
  * ---------12.11 Sets-----------
+ * Sets are just collection of unique values
  */
+let itemSet = new Set([1,2,2,3,4,5,4,5,6,8,7,8])
+let itemSet1 = new Set("Programer")
+console.log(itemSet)
+console.log(itemSet.size)
+console.log(itemSet.has(3))
+itemSet.add(9)
+console.log(itemSet)
+itemSet.delete(9)
+console.log(itemSet)
+
+//Set are also iterables
+for(let item of itemSet){
+    console.log(item)
+}
+for(let item of itemSet1){
+    console.log(item)
+}
 /**
  * ---------12.12 Map Intro And Map Iteration-----
+ * It is data structure which is used to map values into keys
+ * In map the data type of keys can be of "any"
+ * Map is much similar to objects
  */
+
+let restaurantMap = new Map();
+
+//Adding Values into the Map
+
+restaurantMap.set('name',"Bombay Hotel");
+restaurantMap.set(1,"Address1");
+restaurantMap.set(2,"Address2").set(true,"We are open today").set(false,"We are close today")
+console.log(restaurantMap)
+
+//Getting the value
+console.log(restaurantMap.get(false))
+
+//Size of the map
+console.log(restaurantMap.size)
+
 
